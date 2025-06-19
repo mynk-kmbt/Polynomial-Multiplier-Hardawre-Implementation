@@ -6,8 +6,8 @@ module top_module_tb();
     reg clk, reset;
     reg [3:0] data0, data1, ddata0, ddata1, ddata2, ddata3;
     wire [3:0] w0, w1, w2, w3;
-    wire [1:0] signedcoef0, signedcoef1, signedcoef2, signedcoef3;
-    top_module uut (.clk(clk), .reset(reset), .data0(data0), .data1(data1), .ddata0(ddata0), .ddata1(ddata1), .ddata2(ddata2), .ddata3(ddata3), .w0(w0), .w1(w1), .w2(w2), .w3(w3), .signedcoef0(signedcoef0), .signedcoef1(signedcoef1), .signedcoef2(signedcoef2), .signedcoef3(signedcoef3));
+
+    top_module uut (.clk(clk), .reset(reset), .data0(data0), .data1(data1), .ddata0(ddata0), .ddata1(ddata1), .ddata2(ddata2), .ddata3(ddata3), .w0(w0), .w1(w1), .w2(w2), .w3(w3));
     
     initial begin
     clk=0;
