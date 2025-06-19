@@ -6,7 +6,7 @@ module control_unit(clk, reset, sign0, sign1, sign2, sign3, hault);
     
     reg [2:0] counter;
     
-    always@(posedge clk)
+    always@(posedge clk, posedge reset)
     if (reset) counter<=0;
     else begin
         if (counter!=5) counter<=counter+1;
