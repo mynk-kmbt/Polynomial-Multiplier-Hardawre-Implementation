@@ -6,7 +6,7 @@ module CSR(clk, reset, data0, data1, coef0, coef1, coef2, coef3);
     input [n-1:0] data0, data1;
     
     reg [n-1:0] CSR0,CSR1;
-    always@(posedge clk)
+    always@(posedge clk,posedge reset)
     if (reset) 
         begin
             CSR0<=data0;
