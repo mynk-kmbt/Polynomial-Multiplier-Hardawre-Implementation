@@ -14,8 +14,8 @@ module CSR(clk, reset, data0, data1, coef0, coef1, coef2, coef3);
         end
     else
         begin
-            CSR0<={CSR0[0], CSR0[n-1:1]};
-            CSR1<={CSR1[0], CSR1[n-1:1]};
+            CSR0<={CSR0[n-2:0],CSR0[n-1]};
+            CSR1<={CSR1[n-2:0],CSR1[n-1]};
         end
      
     output [1:0] coef0, coef1, coef2, coef3;
