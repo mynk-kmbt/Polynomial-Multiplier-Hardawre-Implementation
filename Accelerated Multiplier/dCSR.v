@@ -8,7 +8,7 @@ module dCSR(clk, reset, ddata0, ddata1, ddata2, ddata3, dcoef);
    
     reg [n-1:0] dCSR0, dCSR1, dCSR2, dCSR3;
     
-    always@(posedge clk)
+    always@(posedge clk,posedge reset)
     if (reset)
         begin
         dCSR0<=ddata0;
