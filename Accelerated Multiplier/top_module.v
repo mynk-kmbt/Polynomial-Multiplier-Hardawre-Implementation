@@ -1,6 +1,6 @@
     `timescale 1ns / 1ps
     
-    module top_module(clk, reset, data0, data1, ddata0, ddata1, ddata2, ddata3, w0, w1, w2, w3,signedcoef0, signedcoef1, signedcoef2, signedcoef3);
+    module top_module(clk, reset, data0, data1, ddata0, ddata1, ddata2, ddata3, w0, w1, w2, w3);
         input clk, reset;
         input [3:0] data0, data1, ddata0, ddata1, ddata2, ddata3;
         output reg [3:0] w0, w1, w2, w3;
@@ -12,9 +12,10 @@
         dCSR inst2 (clk, reset, ddata0, ddata1, ddata2, ddata3, dcoef);
         
         wire hault, sign0, sign1, sign2, sign3;
+    
         control_unit inst3 (clk, reset, sign0, sign1, sign2, sign3, hault);
         
-        output [1:0] signedcoef0, signedcoef1, signedcoef2, signedcoef3;
+        wire [1:0] signedcoef0, signedcoef1, signedcoef2, signedcoef3;
        
         assign signedcoef0=sign0?(~coef0+1):coef0;
         assign signedcoef1=sign1?(~coef1+1):coef1;
