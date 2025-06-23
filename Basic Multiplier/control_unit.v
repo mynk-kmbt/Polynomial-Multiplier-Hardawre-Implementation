@@ -25,7 +25,7 @@ module control_unit(clk,reset, CSR1_load, CSR1_en, CSR2_load, CSR2_en);
     reg [n/2:0] counter1;
     
     
-    always @ (negedge clk)
+    always @ (negedge clk, posedge reset)
     if (reset | (counter1==n && counter==3) )
         begin 
         counter<=0;
@@ -42,7 +42,7 @@ module control_unit(clk,reset, CSR1_load, CSR1_en, CSR2_load, CSR2_en);
     assign CSR2_en = 1'b1;
     assign CSR1_en = (counter==1);
     
-    always@(negedge clk)
+    always@(negedge clk, posedge reset)
         if (reset) counter1<=0;
         else
             if (counter1==n && counter==3) counter1<=0;
