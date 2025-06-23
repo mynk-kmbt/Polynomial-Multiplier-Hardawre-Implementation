@@ -9,8 +9,8 @@ module dcoef(clk, reset, start, ddata0, ddata1, ddata2, ddata3, dcoeff);
     
     reg [n-1:0] CSR3_0,CSR3_1,CSR3_2,CSR3_3 ;
     reg en;
-    always@(posedge clk) en<=reset?0:(start?1:en);
-    always@(posedge clk)
+    always@(posedge clk, posedge reset) en<=reset?0:(start?1:en);
+    always@(posedge clk, posedge reset)
     if (reset)  
         begin
         CSR3_0<=ddata0;
