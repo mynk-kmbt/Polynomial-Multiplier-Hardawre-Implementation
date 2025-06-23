@@ -43,7 +43,7 @@ module CSR1AND2(clk, CSR1_load, CSR1_en, CSR2_load, CSR2_en, data0, data1, coeff
     wire [1:0] SI;
     
     
-    assign SI= ~{CSR1_1[0],CSR1_0[0]} + 1'b1 ;
+    assign SI= ~{CSR1_1[n-1],CSR1_0[n-1]} + 1'b1 ;
     
     always @(posedge clk)
         if (CSR1_load)  
@@ -54,8 +54,8 @@ module CSR1AND2(clk, CSR1_load, CSR1_en, CSR2_load, CSR2_en, data0, data1, coeff
         else 
             if (CSR1_en)
                 begin
-                CSR1_0 <= { SI[0] , CSR1_0[n-1:1]};
-                CSR1_1 <= { SI[1] , CSR1_1[n-1:1]};
+                CSR1_0 <= { CSR1_0[n-2:0], SI[0]};
+                CSR1_1 <= { CSR1_1[n-2:0], SI[1]};
                 end                                
             else
                 begin
