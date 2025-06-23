@@ -16,12 +16,12 @@ module top_module(clk, reset, data0, data1, ddata0, ddata1, ddata2, ddata3, coef
     CSR1AND2 inst2 (clk, CSR1_load, CSR1_en, CSR2_load, CSR2_en, data0, data1, coeff);
     dcoef inst3 (clk, reset, CSR2_load, ddata0, ddata1, ddata2, ddata3, dcoeff);
     
-    always@(posedge clk)
+    always@(posedge clk, posedge reset)
         if (CSR2_load | reset) begin
                                 ac<=0;
-                                out<=ac + (coeff*dcoeff);
+                                out<=ac + ({{5{coeff[1]}},coeff[0]}*{dcoeff[3],dcoeff[3],dcoeff}) ;
                                 end
-        else ac <= ac + (coeff*dcoeff);
+        else ac <= ac + ({{5{coeff[1]}},coeff[0]}*{dcoeff[3],dcoeff[3],dcoeff});
    
    
 endmodule
